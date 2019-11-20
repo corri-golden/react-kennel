@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import "./Animal.css"
+import { Link } from "react-router-dom"
+
+
 
 class AnimalCard extends Component {            // for the button below calling the method for props and passing id for the animal.  its a function definition. 
   render() {
@@ -13,6 +16,7 @@ class AnimalCard extends Component {            // for the button below calling 
             <p>Breed: {this.props.animal.breed}</p>
             <button type="button" onClick={() => this.props.deleteAnimal(this.props.animal.id)}
             >Discharge</button>
+            <Link to={`/animals/${this.props.animal.id}`}><button>Details</button></Link>
           </div>
       </div>
     );
