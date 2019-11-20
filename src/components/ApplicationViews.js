@@ -28,7 +28,7 @@ class ApplicationViews extends Component {
         }} />
 
         {/*
-  This is a new route to handle a URL with the following pattern:
+  This is a new route to handle a URL with the following patterns:
   http://localhost:3000/animals/1
 
   It will not handle the following URL because the `(\d+)`
