@@ -8,8 +8,9 @@ class EmployeeCard extends Component {
         <picture>
             <img src={require('./chase.jpg')} alt="My Dog" />
           </picture>
-          <h3>Employee Name: <span className="card-petname">Chase Fite</span></h3>
+          <h3>Employee Name: <span className="card-employeename">Chase Fite</span></h3>
           <p>Office Manager</p>
+          <button type="button" onClick={() => this.props.deleteEmployee(this.props.employee.id)}>Discharge</button>
         </div>
       </div>
     );

@@ -1,38 +1,56 @@
 import React, { Component } from 'react'
 import EmployeeCard from './EmployeeCard'
 import EmployeeManager from '../../modules/EmployeeManager'
+import AnimalManager from '../../modules/AnimalManager';
 
 
 
 
 class EmployeeList extends Component {
-    //define what this component needs to render
-    state = {
-        employees: [],
-    }
+  //define what this component needs to render
+  state = {
+    employees: [],
+  }
 
-componentDidMount(){
+  componentDidMount() {
     console.log("EMPLOYEE LIST: ComponentDidMount");
     //getAll from EmployeeManager and hang on to that data; put it in state
     EmployeeManager.getAll()
-    .then((employees) => {
+      .then((employees) => {
         this.setState({
-            employees: employees
+          employees: employees
         })
-    })
-}
+      })
+  }
 
-render(){
+  deleteEmployee = id => {
+    EmployeeManager.delete(id)
+      .then(() => {
+        EmployeeManager.getAll()
+          .then((newEmployees) => {
+            this.setState({
+              employees: newEmployees
+            })
+          })
+      })
+  }
+
+  render() {
     console.log("EmployeeList: Render");
-  
+
     return(
       <div className="container-cards">
         {this.state.employees.map(employee =>
-          <EmployeeCard key={employee.id} employee={employee} />
+          <EmployeeCard
+            key={employee.id}
+            employee={employee}
+            deleteEmployee={this.deleteEmployee}
+          />
         )}
       </div>
     )
   }
 }
+
 
 export default EmployeeList
