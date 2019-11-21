@@ -22,10 +22,17 @@ class ApplicationViews extends Component {
           return <AnimalList />
         }} />
         <Route path="/animals/:animalId(\d+)" render={(props) => {
-          console.log(props)
+          console.log("Props from react-router-dom", props)  // props from react-router-dom.
+          console.log("this components's props", this.props)
           // Pass the animalId to the AnimalDetailComponent
-          return <AnimalDetail animalId={parseInt(props.match.params.animalId)} />
-        }} />
+          return <AnimalDetail
+            animalId={parseInt(props.match.params.animalId)} 
+            // history={props.history}
+            // match={props.match}
+            //location={props.location}
+            {...props}     // this props is different.  this is components props.  they are two different objects
+            />    
+      }} />
 
         {/*
   This is a new route to handle a URL with the following patterns:
