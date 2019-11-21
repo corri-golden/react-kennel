@@ -1,0 +1,45 @@
+{
+  "animals": [
+    {
+      "id": 3,
+      "name": "Esme",
+      "breed": "Pitbull"
+    }
+  ],
+  "employees": [
+    {
+      "id": 2,
+      "name": "Dat Duu"
+    },
+    {
+      "id": 3,
+      "name": "Chuck Norris"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Nashville West"
+    },
+    {
+      "id": 2,
+      "name": "East Nashville"
+    },
+    {
+      "id": 3,
+      "name": "GermanTown"
+    }
+  ],
+  "owners": [
+    {
+      "id": 1,
+      "number": "615-444-5545",
+      "name": "Keith Turtleneck"
+    },
+    {
+      "id": 3,
+      "number": "615=222-3333",
+      "name": "Dick Burpneck"
+    }
+  ]
+}
