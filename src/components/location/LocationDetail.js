@@ -9,6 +9,7 @@ class LocationDetail extends Component {
 
     state = {
         name: "",
+        loadingStatus: true,                       // setting load status to disable so user can't click discharge before the page loads
     }
 
     componentDidMount() {
@@ -18,11 +19,19 @@ class LocationDetail extends Component {
             .then((location) => {
                 this.setState({
                     name: location.name,
+                    loadingStatus: false,                      // once the page is loaded we are changing the status so the discharge is accessible
                 });
             });
     }
 
-    render() {
+    handleDelete = () => {
+        //invoke the delete function in AnimalManger and re-direct to the animal list.
+        this.setState({loadingStatus: true})
+        LocationManager.delete(this.props.locationId)
+        .then(() => this.props.history.push("/locations"))
+    }
+
+    render() {             // added a discharge button
         return (
             <div className="card">
                 <div className="card-content">
@@ -30,6 +39,7 @@ class LocationDetail extends Component {
                         <img src={require('./montreal.jpg')} alt="Montreal" />
                     </picture>
                     <h3>Name: <span style={{ color: 'darkslategrey' }}>{this.state.name}</span></h3>
+                    <button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}>Discharge</button>   
                 </div>
             </div>
         );
