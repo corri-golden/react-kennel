@@ -11,6 +11,7 @@ import AnimalDetail from './animal/AnimalDetail'
 import LocationDetail from './location/LocationDetail'
 import AnimalForm from './animal/AnimalForm'
 import AnimalEditForm from './animal/AnimalEditForm'
+import LocationEditForm from './location/LocationEditForm'
 
 
 class ApplicationViews extends Component {
@@ -70,12 +71,17 @@ class ApplicationViews extends Component {
             return <Redirect to="login" />
           }
         }} />
-        <Route path="/locations/:locationId(\d+)" render={(props) => {
+        <Route exact path="/locations/:locationId(\d+)" render={(props) => {
           return <LocationDetail
             locationId={parseInt(props.match.params.locationId)}
             {...props}
           />
         }} />
+        <Route
+          path="/locations/:locationId(\d+)/edit" render={props => {
+            return <LocationEditForm {...props} />
+          }}
+        />
         <Route path="/employees" render={(props) => {
           if (this.isAuthenticated()) {
             return <EmployeeList {...props} />
