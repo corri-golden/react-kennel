@@ -64,7 +64,11 @@ class ApplicationViews extends Component {
   http://localhost:3000/animals/jack
 */}
         <Route exact path="/locations" render={(props) => {
-          return <LocationList />
+          if (this.isAuthenticated()) {
+            return <LocationList {...props} />
+          } else {
+            return <Redirect to="login" />
+          }
         }} />
         <Route path="/locations/:locationId(\d+)" render={(props) => {
           return <LocationDetail
@@ -73,10 +77,18 @@ class ApplicationViews extends Component {
           />
         }} />
         <Route path="/employees" render={(props) => {
-          return <EmployeeList />
+          if (this.isAuthenticated()) {
+            return <EmployeeList {...props} />
+          } else {
+            return <Redirect to="login" />
+          }
         }} />
         <Route path="/owners" render={(props) => {
-          return <OwnerList />
+          if (this.isAuthenticated()) {
+            return <EmployeeList {...props} />
+          } else {
+            return <Redirect to="login" />
+          }
         }} />
         <Route path="/login" component={Login} />
       </React.Fragment>
