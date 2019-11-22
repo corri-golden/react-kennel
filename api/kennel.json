@@ -4,6 +4,16 @@
       "id": 3,
       "name": "Esme",
       "breed": "Pitbull"
+    },
+    {
+      "id": 4,
+      "name": "Rick",
+      "breed": "Poodlz"
+    },
+    {
+      "name": "Dat duu",
+      "breed": "Mutt",
+      "id": 5
     }
   ],
   "employees": [

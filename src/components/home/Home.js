@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Home extends Component {
+class Home extends Component {               //this is the home /default screen.
   render() {
     return (
       <address>

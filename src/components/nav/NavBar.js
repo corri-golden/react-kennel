@@ -6,7 +6,7 @@ class NavBar extends Component {
 
   render(){
 
-    return (
+    return (      // created a nave ba
       <header>
         <h1 className="site-title">Student Kennels<br />
           <small>Loving care when you're not there.</small>
