@@ -31,20 +31,30 @@ class AnimalList extends Component {
       })
   }
 
-  render(){
+  render() {
+
     console.log("AnimalList: Render");
-                                                          //console.log between render and return.  animal.id is id from api
-                                                          
-    return(
-      <div className="container-cards">           
+    //console.log between render and return.  animal.id is id from api
+    return (
+      <React.Fragment>
+      <section className="section-content">
+        <button type="button"
+          className="btn"
+          onClick={() => { this.props.history.push("/animals/new") }}>
+          Admit Animal
+  </button>
+      </section>
+      <div className="container-cards">
         {this.state.animals.map(animal =>
           <AnimalCard
             key={animal.id}
             animal={animal}
             deleteAnimal={this.deleteAnimal}
+            {...this.props}
           />
         )}
       </div>
+      </React.Fragment >
     )
   }
 }

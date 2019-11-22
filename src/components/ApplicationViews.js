@@ -1,15 +1,24 @@
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import React, { Component } from 'react'
 import Home from './home/Home'
 import AnimalList from './animal/AnimalList'
+import Login from './auth/Login'
 //only include these once they are built - previous practice exercise
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
 import OwnerList from './owner/OwnerList'
 import AnimalDetail from './animal/AnimalDetail'
 import LocationDetail from './location/LocationDetail'
+import AnimalForm from './animal/AnimalForm'
+import AnimalEditForm from './animal/AnimalEditForm'
+
 
 class ApplicationViews extends Component {
+
+  // Check if credentials are in local storage
+  //returns true/false
+  isAuthenticated = () => localStorage.getItem("credentials") !== null    // checks to see if the user has logged in.
+
 
   render() {
     return (
@@ -18,21 +27,33 @@ class ApplicationViews extends Component {
           return <Home />
         }} />
         {/* Make sure you add the `exact` attribute here */}
-        <Route exact path="/animals" render={(props) => {
-          return <AnimalList />
+        <Route exact path="/animals" render={props => {
+          if (this.isAuthenticated()) {
+            return <AnimalList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
         }} />
-        <Route path="/animals/:animalId(\d+)" render={(props) => {
+        <Route exact path="/animals/:animalId(\d+)" render={(props) => {
           console.log("Props from react-router-dom", props)  // props from react-router-dom.
           console.log("this components's props", this.props)
           // Pass the animalId to the AnimalDetailComponent
           return <AnimalDetail
-            animalId={parseInt(props.match.params.animalId)} 
+            animalId={parseInt(props.match.params.animalId)}
             // history={props.history}
             // match={props.match}
             //location={props.location}
             {...props}     // this props is different.  this is components props.  they are two different objects
-            />    
-      }} />
+          />
+        }} />
+        <Route path="/animals/new" render={(props) => {
+          return <AnimalForm {...props} />
+        }} />
+        <Route
+          path="/animals/:animalId(\d+)/edit" render={props => {
+            return <AnimalEditForm {...props} />
+          }}
+        />
 
         {/*
   This is a new route to handle a URL with the following patterns:
@@ -47,17 +68,17 @@ class ApplicationViews extends Component {
         }} />
         <Route path="/locations/:locationId(\d+)" render={(props) => {
           return <LocationDetail
-           locationId={parseInt(props.match.params.locationId)}
-           {...props}
-           />
+            locationId={parseInt(props.match.params.locationId)}
+            {...props}
+          />
         }} />
-
         <Route path="/employees" render={(props) => {
           return <EmployeeList />
         }} />
         <Route path="/owners" render={(props) => {
           return <OwnerList />
         }} />
+        <Route path="/login" component={Login} />
       </React.Fragment>
     )
   }
