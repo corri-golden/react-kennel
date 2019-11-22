@@ -28,7 +28,11 @@ class Login extends Component {
             password: this.state.password
         })
     )
-    this.props.history.push("/animals");
+    this.props.history.push("/animals");   // this section is for when you want to login and go directly to that section
+    this.props.history.push("/locations");
+    this.props.history.push("/employees");
+    this.props.history.push("/owners");
+
 
   }
 
