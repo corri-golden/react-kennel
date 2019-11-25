@@ -6,11 +6,13 @@ import Login from './auth/Login'
 //only include these once they are built - previous practice exercise
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
-import OwnerList from './owner/OwnerList'
+// import OwnerList from './owner/OwnerList'
 import AnimalDetail from './animal/AnimalDetail'
 import LocationDetail from './location/LocationDetail'
 import AnimalForm from './animal/AnimalForm'
 import AnimalEditForm from './animal/AnimalEditForm'
+import LocationEditForm from './location/LocationEditForm'
+import EmployeeWithAnimals from './employee/EmployeeWithAnimals'
 
 
 class ApplicationViews extends Component {
@@ -70,18 +72,26 @@ class ApplicationViews extends Component {
             return <Redirect to="login" />
           }
         }} />
-        <Route path="/locations/:locationId(\d+)" render={(props) => {
+        <Route exact path="/locations/:locationId(\d+)" render={(props) => {
           return <LocationDetail
             locationId={parseInt(props.match.params.locationId)}
             {...props}
           />
         }} />
-        <Route path="/employees" render={(props) => {
+        <Route
+          path="/locations/:locationId(\d+)/edit" render={props => {
+            return <LocationEditForm {...props} />
+          }}
+        />
+        <Route exact path="/employees" render={props => {
           if (this.isAuthenticated()) {
             return <EmployeeList {...props} />
           } else {
             return <Redirect to="login" />
           }
+        }} />
+        <Route path="/employees/:employeeId(\d+)/details" render={(props) => {
+          return <EmployeeWithAnimals {...props} />
         }} />
         <Route path="/owners" render={(props) => {
           if (this.isAuthenticated()) {

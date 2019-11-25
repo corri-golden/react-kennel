@@ -41,8 +41,9 @@ import React, { Component } from 'react'
                 {this.state.locations.map(location => 
                 <LocationCard 
                 key={location.id} 
-                location={location} 
+                locations={location}   // changed location to locations
                 deleteLocation={this.deleteLocation}
+                {...this.props}
                 />
                 )}
             </div>
