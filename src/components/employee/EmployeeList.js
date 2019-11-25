@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import EmployeeCard from './EmployeeCard'
 import EmployeeManager from '../../modules/EmployeeManager'
-import AnimalManager from '../../modules/AnimalManager';
+// import AnimalManager from '../../modules/AnimalManager';
 
 
 
@@ -45,6 +45,7 @@ class EmployeeList extends Component {
             key={employee.id}
             employee={employee}
             deleteEmployee={this.deleteEmployee}
+            {...this.props}
           />
         )}
       </div>
