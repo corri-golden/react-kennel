@@ -11,7 +11,7 @@ class AnimalList extends Component {
 
   componentDidMount() {
     console.log("ANIMAL LIST: ComponentDidMount");
-    //getAll from AnimalManager and hang on to that data; put it in state
+    //getAll from AnimalManager and hang on to that data; put it in state.
     AnimalManager.getAll()
       .then((animals) => {
         this.setState({
