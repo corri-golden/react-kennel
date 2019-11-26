@@ -45,7 +45,7 @@ class AnimalList extends Component {
   </button>
       </section>
       <div className="container-cards">
-        {this.state.animals.map(animal =>
+        {this.state.animals.map(animal =>                              // iterate over the animal data with map
           <AnimalCard
             key={animal.id}
             animal={animal}

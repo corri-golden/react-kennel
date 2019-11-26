@@ -39,7 +39,7 @@ class LocationDetail extends Component {
                         <img src={require('./montreal.jpg')} alt="Montreal" />
                     </picture>
                     <h3>Name: <span style={{ color: 'darkslategrey' }}>{this.state.name}</span></h3>
-                    <button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}>Discharge</button>   
+                    <button type="button" disabled={this.state.loadingStatus} onClick={this.handleDelete}>Close</button>   
                 </div>
             </div>
         );
