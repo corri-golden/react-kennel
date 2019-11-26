@@ -11,11 +11,20 @@ export default {
     return fetch(`${remoteURL}/employees/${id}`, {
       method: "DELETE"
     })
-    .then(result => result.json())
-    },
+      .then(result => result.json())
+  },
+  post(newAnimal) {
+    return fetch(`${remoteURL}/animals`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newAnimal)
+    }).then(data => data.json())
+  },
     getWithAnimals(id) {                                               // 
-      return fetch(`${remoteURL}/employees/${id}?_embed=animals`)
-              .then(result => result.json())
+    return fetch(`${remoteURL}/employees/${id}?_embed=animals`)
+      .then(result => result.json())
   }
 }
 
