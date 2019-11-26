@@ -11,7 +11,7 @@ class AnimalList extends Component {
 
   componentDidMount() {
     console.log("ANIMAL LIST: ComponentDidMount");
-    //getAll from AnimalManager and hang on to that data; put it in state
+    //getAll from AnimalManager and hang on to that data; put it in state.
     AnimalManager.getAll()
       .then((animals) => {
         this.setState({
@@ -45,7 +45,7 @@ class AnimalList extends Component {
   </button>
       </section>
       <div className="container-cards">
-        {this.state.animals.map(animal =>
+        {this.state.animals.map(animal =>                              // iterate over the animal data with map
           <AnimalCard
             key={animal.id}
             animal={animal}

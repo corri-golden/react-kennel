@@ -7,6 +7,14 @@
     {
       "id": 4,
       "name": "SouthSide"
+    },
+    {
+      "id": 2,
+      "name": "GermanTown"
+    },
+    {
+      "id": 3,
+      "name": "North Side"
     }
   ],
   "animals": [
@@ -33,6 +41,11 @@
       "name": "Angus",
       "breed": "Gerbil",
       "employeeId": 3
+    },
+    {
+      "name": "Jasper",
+      "breed": "Mutt",
+      "id": 6
     }
   ],
   "employees": [
