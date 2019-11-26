@@ -6,7 +6,7 @@ import Login from './auth/Login'
 //only include these once they are built - previous practice exercise
 import LocationList from './location/LocationList'
 import EmployeeList from './employee/EmployeeList'
-// import OwnerList from './owner/OwnerList'
+import OwnerList from './owner/OwnerList'
 import AnimalDetail from './animal/AnimalDetail'
 import LocationDetail from './location/LocationDetail'
 import AnimalForm from './animal/AnimalForm'
@@ -19,7 +19,7 @@ class ApplicationViews extends Component {
 
   // Check if credentials are in local storage
   //returns true/false
-  isAuthenticated = () => localStorage.getItem("credentials") !== null    // checks to see if the user has logged in.
+  // isAuthenticated = () => localStorage.getItem("credentials") !== null    // checks to see if the user has logged in.
 
 
   render() {
@@ -30,7 +30,7 @@ class ApplicationViews extends Component {
         }} />
         {/* Make sure you add the `exact` attribute here */}
         <Route exact path="/animals" render={props => {
-          if (this.isAuthenticated()) {
+          if (this.props.user) {
             return <AnimalList {...props} />
           } else {
             return <Redirect to="/login" />
@@ -51,8 +51,7 @@ class ApplicationViews extends Component {
         <Route path="/animals/new" render={(props) => {
           return <AnimalForm {...props} />
         }} />
-        <Route
-          path="/animals/:animalId(\d+)/edit" render={props => {
+        <Route path="/animals/:animalId(\d+)/edit" render={props => {
             return <AnimalEditForm {...props} />
           }}
         />
@@ -66,7 +65,7 @@ class ApplicationViews extends Component {
   http://localhost:3000/animals/jack
 */}
         <Route exact path="/locations" render={(props) => {
-          if (this.isAuthenticated()) {
+          if (this.props.user) {
             return <LocationList {...props} />
           } else {
             return <Redirect to="login" />
@@ -84,23 +83,17 @@ class ApplicationViews extends Component {
           }}
         />
         <Route exact path="/employees" render={props => {
-          if (this.isAuthenticated()) {
             return <EmployeeList {...props} />
-          } else {
-            return <Redirect to="login" />
-          }
         }} />
         <Route path="/employees/:employeeId(\d+)/details" render={(props) => {
           return <EmployeeWithAnimals {...props} />
         }} />
         <Route path="/owners" render={(props) => {
-          if (this.isAuthenticated()) {
-            return <EmployeeList {...props} />
-          } else {
-            return <Redirect to="login" />
-          }
+            return <OwnerList {...props} />
         }} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" render={(props) => {
+          return <Login setUser={this.props.setUser} {...props} />
+        }} />       
       </React.Fragment>
     )
   }
