@@ -40,7 +40,7 @@ class OwnerList extends Component {
         <section className="section-content">
           <button type="button"
             className="btn"
-            onClick={() => { this.props.history.push("/employees/new") }}>
+            onClick={() => { this.props.history.push("/owners/new") }}>
             Add Owner
   </button>
         </section>

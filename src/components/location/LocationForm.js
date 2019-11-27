@@ -53,9 +53,9 @@ class LocationForm extends Component {
                         required
                         onChange={this.handleFieldChange}
                         id="breed"
-                        placeholder="address"
+                        placeholder="Address"
                         />
-                        <label htmlFor="breed">address</label>
+                        <label htmlFor="breed">Address</label>
                     </div>
                     <div className="alignRight">
                         <button

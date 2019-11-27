@@ -46,7 +46,7 @@ class OwnerForm extends Component {
                         required
                         onChange={this.handleFieldChange}
                         id="ownerName"
-                        placeholder="Owner name"
+                        placeholder="Name"
                         />
                         <label htmlFor="ownerName">Name</label>
                         <input
@@ -54,7 +54,7 @@ class OwnerForm extends Component {
                         required
                         onChange={this.handleFieldChange}
                         id="owner"
-                        placeholder="Owner"
+                        placeholder="Number"
                         />
                         <label htmlFor="number">Number</label>
                     </div>

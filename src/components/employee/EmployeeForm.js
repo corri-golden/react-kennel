@@ -46,7 +46,7 @@ class EmployeeForm extends Component {
                         required
                         onChange={this.handleFieldChange}
                         id="employeeName"
-                        placeholder="Employee name"
+                        placeholder="Employee Name"
                         />
                         <label htmlFor="employeeName">Name</label>
                         <input
