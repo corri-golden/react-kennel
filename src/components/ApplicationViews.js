@@ -13,6 +13,12 @@ import AnimalForm from './animal/AnimalForm'
 import AnimalEditForm from './animal/AnimalEditForm'
 import LocationEditForm from './location/LocationEditForm'
 import EmployeeWithAnimals from './employee/EmployeeWithAnimals'
+import LocationForm from './location/LocationForm'
+import EmployeeForm from './employee/EmployeeForm'
+import OwnerForm from './owner/OwnerForm'
+
+
+
 
 
 class ApplicationViews extends Component {
@@ -52,8 +58,8 @@ class ApplicationViews extends Component {
           return <AnimalForm {...props} />
         }} />
         <Route path="/animals/:animalId(\d+)/edit" render={props => {
-            return <AnimalEditForm {...props} />
-          }}
+          return <AnimalEditForm {...props} />
+        }}
         />
 
         {/*
@@ -77,23 +83,35 @@ class ApplicationViews extends Component {
             {...props}
           />
         }} />
+
         <Route
           path="/locations/:locationId(\d+)/edit" render={props => {
             return <LocationEditForm {...props} />
           }}
         />
+        <Route path="/locations/new" render={(props) => {
+          return <LocationForm {...props} />
+        }}
+        />
         <Route exact path="/employees" render={props => {
-            return <EmployeeList {...props} />
+          return <EmployeeList {...props} />
         }} />
         <Route path="/employees/:employeeId(\d+)/details" render={(props) => {
           return <EmployeeWithAnimals {...props} />
         }} />
+
+        <Route path="/employees/new" render={(props) => {
+          return <EmployeeForm {...props} />
+        }} />
+        <Route path="/owners/new" render={(props) => {
+          return <OwnerForm {...props} />
+        }} />
         <Route path="/owners" render={(props) => {
-            return <OwnerList {...props} />
+          return <OwnerList {...props} />
         }} />
         <Route path="/login" render={(props) => {
           return <Login setUser={this.props.setUser} {...props} />
-        }} />       
+        }} />
       </React.Fragment>
     )
   }
